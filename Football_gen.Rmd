@@ -17,35 +17,57 @@ library(data.table)
 
 Scraping in R:
 ```{r}
-links <- read.table("Game_Links_Home.txt", sep = "")
 
-table_store <- list()
-page <- list()
-df_stats <- list()
-df_scoreboard <- list()
-
-
-for(i in 1:nrow(links)){
-  page[[i]] <- read_html(as.character(links[i,1]))
-  table_store[[i]] <- html_table(page[[i]])
+pull_stats <- function(link_txt, away = c(TRUE, FALSE)){
   
+  require(rvest)
+
+  links <- read.table(link_txt, sep = "")
+  
+  table_store <- list()
+  page <- list()
+  df_stats <- list()
+  df_scoreboard <- list()
+  
+  
+  for(i in 1:nrow(links)){
+    page[[i]] <- read_html(as.character(links[i,1]))
+    table_store[[i]] <- html_table(page[[i]])
+    
+  }
+  
+  
+  for(i in 1:length(page)){
+    
+    #Transposing Data And Keeping Row Labels as Colnames
+    df_stats[[i]] <- transpose(data.frame(table_store[[i]][2]), make.names =  1)
+    
+    #Getting Score For Each Game
+    df_scoreboard[[i]] <- table_store[[i]][1]
+    
+    #Adding Team Names to the Rows
+    rownames(df_stats[[i]]) <- data.frame(df_scoreboard[[i]])$Var.1
+    
+    #Adding Final Score
+    df_stats[[i]]$Score <- data.frame(df_scoreboard[[i]])$T
+    
+    
+  }
+  
+  #Switch Rows if AWAY game
+
+  if(away){
+    for(i in 1:length(links)){
+    
+    df_stats[[i]] <- df_stats[[i]][c(2,1),]  
+    
+    }
+  }
+  
+  return(df_stats)
 }
 
-
-for(i in 1:length(page)){
-  
-  #Transposing Data
-  df_stats[[i]] <- transpose(data.frame(table_store[[i]][2]), make.names =  1)
-  
-  #Getting Score For Each Game
-  df_scoreboard[[i]] <- table_store[[i]][1]
-  
-  #Adding Team Names to the Rows
-  rownames(df_stats[[i]]) <- data.frame(df_scoreboard[[i]])$Var.1
-  
-  #Adding Final Score
-  df_stats[[i]]$Score <- data.frame(df_scoreboard[[i]])$T
-}
+pull_stats("Game_Links_Away.txt", away = TRUE)
 ```
 
 
@@ -110,6 +132,7 @@ ratio_ESPN <- function(list){
                             (as.numeric(word(list[[i]][2,16], start = -1, sep = ":"))/60)
                                             
     }
+    
         return(list)
 }
     
