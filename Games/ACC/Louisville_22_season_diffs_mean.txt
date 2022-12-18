@@ -1,0 +1,2 @@
+"diff_1st Downs" "diff_3rd down efficiency" "diff_4th down efficiency" "diff_Total Yards" "diff_Passing" "diff_Comp-Att" "diff_Yards per pass" "diff_Interceptions thrown" "diff_Rushing" "diff_Rushing Attempts" "diff_Yards per rush" "diff_Penalties" "diff_Turnovers" "diff_Fumbles lost" "diff_Possession" "diff_Score"
+"1" 2 0.05 0.295 76.385 8.538 0.016 0.138 -0.231 67.846 2.538 1.531 10.308 -0.538 -0.308 -0.12 7.769

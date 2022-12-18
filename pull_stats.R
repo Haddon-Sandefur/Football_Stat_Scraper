@@ -1,4 +1,4 @@
-pull_stats <- function(link_txt, away = c(TRUE, FALSE)){
+pull_stats <- function(link_txt, away = c(TRUE, FALSE), row_names = c(TRUE, FALSE)){
   
   require(dplyr)
   require(rvest)
@@ -130,9 +130,15 @@ pull_stats <- function(link_txt, away = c(TRUE, FALSE)){
     mutate(Result = ifelse(diff_Score >= 0, "W", "L"),
            Result_num = ifelse(diff_Score >= 0, 1, 0))
   
-  # Adding Opponents to Game Diffs  Dataframes
+  # Adding Opponents and Reference team to Game Diffs Dataframes either as row name or column vector
+  if(row_names){
+    rownames(game_diffs) <- opponent_names
+  } else {
+    game_diffs$Opponent <- opponent_names
+    
+    game_diffs$Team <- rownames(df_stats[[1]][2,])
+  }
   
-  rownames(game_diffs) <- opponent_names
   
  return(list("Game List" = df_stats, "Game Differentials" = game_diffs))
 }
