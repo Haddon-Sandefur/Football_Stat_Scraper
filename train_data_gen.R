@@ -1,0 +1,484 @@
+#Source for Function and Require Package
+
+source("pull_stats.R")
+
+library(tidyverse)
+
+# Team Names ------------------------------- 
+Independent_teams <- c("Army",  
+                       "Liberty",
+                       "New_Mexico_State",
+                       "UConn",
+                       "UMass")
+
+ND_BYU_teams <- c("BYU",
+            "Notre_Dame")
+
+
+
+aac_teams <- c("Cincinnati",  # Vector of Conference Teams
+               "East_Carolina",
+               "Houston",
+               "Memphis",
+               "Navy",
+               "SMU",
+               "South_Florida",
+               "Temple",
+               "Tulane",
+               "Tulsa",
+               "UCF")
+
+
+acc_teams <- c("Boston_College",  # Vector of Conference Teams
+               "Clemson",
+               "Duke",
+               "Florida_State",
+               "Georgia_Tech",
+               "Louisville",
+               "Miami",
+               "NC_State",
+               "North_Carolina",
+               "Pittsburgh",
+               "Syracuse",
+               "Virginia",
+               "Virginia_Tech",
+               "Wake_Forest")
+
+Big10_teams <- c("Illinois",  # Vector of Conference Teams
+                 "Indiana",
+                 "Iowa",
+                 "Maryland",
+                 "Michigan",
+                 "Michigan_State",
+                 "Minnesota",
+                 "Nebraska",
+                 "Northwestern",
+                 "Ohio_State",
+                 "Penn_State",
+                 "Purdue",
+                 "Rutgers",
+                 "Wisconsin")
+
+Big12_teams <- c("Baylor",  # Vector of Conference Teams
+                 "Iowa_State",
+                 "Kansas",
+                 "Kansas_State",
+                 "Oklahoma",
+                 "Oklahoma_State",
+                 "TCU",
+                 "Texas",
+                 "Texas_Tech",
+                 "West_Virginia")
+
+
+CUSA_teams <- c("Charlotte",  # Vector of Conference Teams
+                "Florida_Atlantic",
+                "Florida_International",
+                "Louisiana_Tech",
+                "Middle_Tennessee",
+                "North_Texas",
+                "Rice",
+                "UAB",
+                "UTEP",
+                "UTSA",
+                "Western_Kentucky")
+
+
+
+MAC_teams <- c("Akron",  # Vector of Conference Teams
+               "Ball_State",
+               "Bowling_Green",
+               "Buffalo",
+               "Central_Michigan",
+               "Eastern_Michigan",
+               "Kent_State",
+               "Miami_OH",
+               "Northern_Illinois",
+               "Ohio",
+               "Toledo",
+               "Western_Michigan")
+
+
+MountainWest_teams <- c("Air_Force",  # Vector of Conference Teams
+                        "Boise_State",
+                        "Colorado_State",
+                        "Fresno_State",
+                        "Hawaii",
+                        "Nevada",
+                        "New_Mexico",
+                        "San_Diego_State",
+                        "San_Jose_State",
+                        "UNLV",
+                        "Utah_State",
+                        "Wyoming")
+
+PAC12_teams <- c("Arizona",  # Vector of Conference Teams
+                 "Arizona_State",
+                 "California",
+                 "Colorado",
+                 "Oregon",
+                 "Oregon_State",
+                 "Stanford",
+                 "UCLA",
+                 "USC",
+                 "Utah",
+                 "Washington",
+                 "Washington_State")
+
+
+SEC_teams <- c("Alabama",  # Vector of Conference Teams
+               "Arkansas",
+               "Auburn",
+               "Florida",
+               "Georgia",
+               "Kentucky",
+               "LSU",
+               "Mississippi_State",
+               "Missouri",
+               "Ole_Miss",
+               "South_Carolina",
+               "Tennessee",
+               "Texas_A&M",
+               "Vanderbilt")
+
+
+
+sunbelt_teams <- c("Appalachian_State",  # Vector of Conference Teams
+                   "Arkansas_State",
+                   "Coastal_Carolina",
+                   "Georgia_Southern",
+                   "James_Madison",
+                   "Louisiana",
+                   "Louisiana_Monroe",
+                   "Marshall",
+                   "Old_Dominion",
+                   "South_Alabama",
+                   "Southern_Miss",
+                   "Texas_State",
+                   "Troy")
+
+all_teams <- c(aac_teams,
+               ACC_teams,
+               ND_BYU_teams,
+               Big10_teams,
+               Big12_teams,
+               CUSA_teams,
+               Independent_teams,
+               MAC_teams,
+               MountainWest_teams,
+               PAC12_teams,
+               SEC_teams,
+               sunbelt_teams)
+
+
+
+# AAC ====================================================
+aac_list_home <- list()
+aac_list_away <- list()
+
+for (i in 1:length(aac_teams)) {
+  
+  aac_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(aac_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                   away = FALSE, 
+                                   row_names = FALSE)$`Game Differentials`
+  
+  aac_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(aac_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                   away = TRUE,
+                                   row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+aac_away <- do.call(rbind, aac_list_away)
+aac_home <- do.call(rbind, aac_list_home)
+
+aac <- rbind(aac_away, aac_home)
+
+aac$Power <- 6
+
+# acc ====================================================
+acc_list_home <- list()
+acc_list_away <- list()
+
+for (i in 1:length(acc_teams)) {
+  
+  acc_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(acc_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                   away = FALSE, 
+                                   row_names = FALSE)$`Game Differentials`
+  
+  acc_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(acc_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                   away = TRUE,
+                                   row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+acc_away <- do.call(rbind, acc_list_away)
+acc_home <- do.call(rbind, acc_list_home)
+
+acc <- rbind(acc_away, acc_home)
+
+acc$Power <- 7
+
+# Big10 ====================================================
+Big10_list_home <- list()
+Big10_list_away <- list()
+
+for (i in 1:length(Big10_teams)) {
+  
+  Big10_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(Big10_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                     away = FALSE, 
+                                     row_names = FALSE)$`Game Differentials`
+  
+  Big10_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(Big10_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                     away = TRUE,
+                                     row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+Big10_away <- do.call(rbind, Big10_list_away)
+Big10_home <- do.call(rbind, Big10_list_home)
+
+Big10 <- rbind(Big10_away, Big10_home)
+
+Big10$Power <- 11
+
+# Big12 ====================================================
+Big12_list_home <- list()
+Big12_list_away <- list()
+
+for (i in 1:length(Big12_teams)) {
+  
+  Big12_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(Big12_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                     away = FALSE, 
+                                     row_names = FALSE)$`Game Differentials`
+  
+  Big12_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(Big12_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                     away = TRUE,
+                                     row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+Big12_away <- do.call(rbind, Big12_list_away)
+Big12_home <- do.call(rbind, Big12_list_home)
+
+Big12 <- rbind(Big12_away, Big12_home)
+
+Big12$Power <- 10
+
+# CUSA ====================================================
+CUSA_list_home <- list()
+CUSA_list_away <- list()
+
+for (i in 1:length(CUSA_teams)) {
+  
+  CUSA_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(CUSA_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                    away = FALSE, 
+                                    row_names = FALSE)$`Game Differentials`
+  
+  CUSA_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(CUSA_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                    away = TRUE,
+                                    row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+CUSA_away <- do.call(rbind, CUSA_list_away)
+CUSA_home <- do.call(rbind, CUSA_list_home)
+
+CUSA <- rbind(CUSA_away, CUSA_home)
+
+CUSA$Power <- 2
+
+# Independent ====================================================
+
+Independent_list_home <- list()
+Independent_list_away <- list()
+
+for (i in 1:length(Independent_teams)) {
+  
+  Independent_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(Independent_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                           away = FALSE, 
+                                           row_names = FALSE)$`Game Differentials`
+  
+  Independent_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(Independent_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                           away = TRUE,
+                                           row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+Independent_away <- do.call(rbind, Independent_list_away)
+Independent_home <- do.call(rbind, Independent_list_home)
+
+Independent <- rbind(Independent_away, Independent_home)
+
+Independent$Power <- 3
+
+# ND_BYU ====================================================
+ND_BYU_list_home <- list()
+ND_BYU_list_away <- list()
+
+for (i in 1:length(ND_BYU_teams)) {
+  
+  ND_BYU_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(ND_BYU_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                      away = FALSE, 
+                                      row_names = FALSE)$`Game Differentials`
+  
+  ND_BYU_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(ND_BYU_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                      away = TRUE,
+                                      row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+ND_BYU_away <- do.call(rbind, ND_BYU_list_away)
+ND_BYU_home <- do.call(rbind, ND_BYU_list_home)
+
+ND_BYU <- rbind(ND_BYU_away, ND_BYU_home)
+
+ND_BYU$Power <- 8
+
+# MAC ====================================================
+MAC_list_home <- list()
+MAC_list_away <- list()
+
+for (i in 1:length(MAC_teams)) {
+  
+  MAC_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(MAC_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                   away = FALSE, 
+                                   row_names = FALSE)$`Game Differentials`
+  
+  MAC_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(MAC_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                   away = TRUE,
+                                   row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+MAC_away <- do.call(rbind, MAC_list_away)
+MAC_home <- do.call(rbind, MAC_list_home)
+
+MAC <- rbind(MAC_away, MAC_home)
+
+MAC$Power <- 1
+
+# MountainWest ====================================================
+MountainWest_list_home <- list()
+MountainWest_list_away <- list()
+
+for (i in 1:length(MountainWest_teams)) {
+  
+  MountainWest_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(MountainWest_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                            away = FALSE, 
+                                            row_names = FALSE)$`Game Differentials`
+  
+  MountainWest_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(MountainWest_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                            away = TRUE,
+                                            row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+MountainWest_away <- do.call(rbind, MountainWest_list_away)
+MountainWest_home <- do.call(rbind, MountainWest_list_home)
+
+MountainWest <- rbind(MountainWest_away, MountainWest_home)
+
+MountainWest$Power <- 4
+
+# PAC12 ====================================================
+PAC12_list_home <- list()
+PAC12_list_away <- list()
+
+for (i in 1:length(PAC12_teams)) {
+  
+  PAC12_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(PAC12_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                     away = FALSE, 
+                                     row_names = FALSE)$`Game Differentials`
+  
+  PAC12_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(PAC12_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                     away = TRUE,
+                                     row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+PAC12_away <- do.call(rbind, PAC12_list_away)
+PAC12_home <- do.call(rbind, PAC12_list_home)
+
+PAC12 <- rbind(PAC12_away, PAC12_home)
+
+PAC12$Power <- 9
+
+# SEC ====================================================
+SEC_list_home <- list()
+SEC_list_away <- list()
+
+for (i in 1:length(SEC_teams)) {
+  
+  SEC_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(SEC_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                   away = FALSE, 
+                                   row_names = FALSE)$`Game Differentials`
+  
+  SEC_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(SEC_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                   away = TRUE,
+                                   row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+SEC_away <- do.call(rbind, SEC_list_away)
+SEC_home <- do.call(rbind, SEC_list_home)
+
+SEC <- rbind(SEC_away, SEC_home)
+
+SEC$Power <- 12
+
+
+# Sun Belt =================================================
+
+
+sunbelt_list_home <- list()
+
+sunbelt_list_away <- list()
+
+for (i in 1:length(sunbelt_teams)) {
+  
+  sunbelt_list_home[[i]] <- pull_stats(paste("Master_Set/",paste(sunbelt_teams[i],"22","Home.txt", sep = "_"), sep = ""), 
+                                       away = FALSE, 
+                                       row_names = FALSE)$`Game Differentials`
+  
+  sunbelt_list_away[[i]] <- pull_stats(paste("Master_Set",paste(sunbelt_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+                                       away = TRUE,
+                                       row_names = FALSE)$`Game Differentials`
+  
+}
+
+
+sb_away <- do.call(rbind, sunbelt_list_away)
+sb_home <- do.call(rbind, sunbelt_list_home)
+
+SBC <- rbind(sb_away, sb_home)
+
+SBC$Power <- 4
+
+
+# ===================================================================
+
+master_set <- rbind(aac,
+                    acc,
+                    Big10,
+                    Big12,
+                    CUSA,
+                    Independent,
+                    ND_BYU,
+                    PAC12,
+                    SEC,
+                    SBC
+                    )
+
+write.table(master_set, "master_set.txt")
+
