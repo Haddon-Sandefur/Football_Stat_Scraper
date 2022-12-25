@@ -9,4 +9,9 @@ The "master_set.txt" datafile contains each team's difference in statistical cat
 
 As of now, no Machine Learning or Statistical methods have been employed for predictive modelling, but will be implemented in the near future.
 
-Thansk!
+Thanks!
+
+- Update 12/24
+
+Fixed the UGA/Oregon screw up and added a simple logistic model in a jupyter notebook file to predict some bowl games. Happy Holidays! 
+Refer to "quick_predictions.txt" for game predictions.

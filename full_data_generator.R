@@ -158,7 +158,7 @@ sunbelt_teams <- c("Appalachian_State",  # Vector of Conference Teams
                    "Troy")
 
 all_teams <- c(aac_teams,
-               ACC_teams,
+               acc_teams,
                ND_BYU_teams,
                Big10_teams,
                Big12_teams,
@@ -379,7 +379,11 @@ for (i in 1:length(MountainWest_teams)) {
                                             away = TRUE,
                                             row_names = FALSE)$`Game Differentials`
   
+  setTxtProgressBar(pb, i)
+  
 }
+
+close(pb)
 
 
 MountainWest_away <- do.call(rbind, MountainWest_list_away)
@@ -451,7 +455,7 @@ for (i in 1:length(sunbelt_teams)) {
                                        away = FALSE, 
                                        row_names = FALSE)$`Game Differentials`
   
-  sunbelt_list_away[[i]] <- pull_stats(paste("Master_Set",paste(sunbelt_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
+  sunbelt_list_away[[i]] <- pull_stats(paste("Master_Set/",paste(sunbelt_teams[i],"22","Away.txt", sep = "_"), sep = ""), 
                                        away = TRUE,
                                        row_names = FALSE)$`Game Differentials`
   
