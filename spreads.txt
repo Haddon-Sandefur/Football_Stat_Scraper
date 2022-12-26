@@ -1,0 +1,33 @@
+Team : Score Differential (e.g, Bowling Green loses by -1.897...)
+
+*Note that these results are biased towards season averages within conference play. 
+ This model DOES NOT currently adjust for and relative talent gaps.
+
+**Note that the numbers are not in spread format, but rather predicted score differntial.
+
+Bowling Green : [-1.89727786]
+Wake Forest : [0.49443787]
+Georgia : [0.67492693]
+Georgia Southern : [-5.25897262]
+Duke : [0.56148134]
+Michigan : [5.94154767]
+Middle Tennessee : [5.45866226]
+Memphis : [9.35735714]
+Coastal Carolina : [-2.90473435]
+Wisconsin : [10.09989294]
+Kansas : [0.03309729]
+Oregon : [14.12813928]
+Texas Tech : [-10.04264271]
+Oklahoma : [-11.79547103]
+Texas : [0.04353298]
+Tennessee : [11.52251113]
+Alabama : [5.35340578]
+Iowa : [-1.5063956]
+Purdue : [-2.1906842]
+
+NATIONAL CHAMPIONSHIP Georgia : [-2.06152172]  (Michigan predicted NAT Champs)
+
+
+Root Mean Squared Error (RMSE): 9.1856595172262
+
+(RMSE is the average deviation in model predicted scores vs actual, real scores in a test-case dataset)

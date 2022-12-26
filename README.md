@@ -16,11 +16,14 @@ one error in the resultant data set: for one game, the scraper and this extracti
 Eastern Washington. I'll take a deep dive into this problem in the near future to find a solution, as I'm sure this isn't the only instance. However,
 cursory checks of other teams have thus far looked accurate.
 
-As of now, no Machine Learning or Statistical methods have been employed for predictive modelling, but will be implemented in the near future.
 
 Thanks!
 
 - Update 12/24
 
 Fixed the UGA/Oregon screw up and added a simple logistic model in a jupyter notebook file to predict some bowl games. Happy Holidays! 
-Refer to "quick_predictions.txt" for game predictions.
+
+
+- Update 12/26 
+
+Updating text files and transferring out depreciated files. Jupyter Notebook code switched to Random Forest model and transferred to a single script file to obtain a spread-based outcome rather than a binary W/L outcome.
