@@ -4,7 +4,7 @@ Hey There!
 
 This is my college football web crawler + scraper. The intent is to use this data for prediction models.
 
-- Update 01/06 VERSION 2 ROLL OUT ===========================================================================================
+- Update 01/06 VERSION 2 ROLL OUT ===============================================================================
 
 I've gone ahead and streamlined the data collection process, which was previously tedious (having to manually grab links to be scraped yourself). Now we have a webcrawler to obtain these links for us. Not only that, but generating the master data set (the data set containing all matchups through weeks 1-15) has become much more simple. Further, the computation time and code has been chewed from the original script that calculated season average statistics.
 
