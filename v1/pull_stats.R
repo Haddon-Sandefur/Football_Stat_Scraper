@@ -1,10 +1,14 @@
-pull_stats <- function(link_txt, away = c(TRUE, FALSE), row_names = c(TRUE, FALSE)){
+pull_stats <- function(file, away = c(TRUE, FALSE), row_names = c(TRUE, FALSE)){
   
   require(dplyr)
   require(rvest)
   require(data.table)
   
-  links <- read.table(link_txt, sep = "")
+  
+    links <- read.table(file = file, sep = "")
+
+  
+  
   
   #Storage 
   table_store <- list()
@@ -106,6 +110,7 @@ pull_stats <- function(link_txt, away = c(TRUE, FALSE), row_names = c(TRUE, FALS
   game_differentials <- list()
   game_diffs <- matrix(NA, nrow = length(df_stats), ncol = length(df_stats[[1]]))
   opponent_names <- c()
+  team_names <- c()
   
   for(i in 1:nrow(links)){
     game_differentials[[i]] <- df_stats[[i]]
@@ -121,6 +126,7 @@ pull_stats <- function(link_txt, away = c(TRUE, FALSE), row_names = c(TRUE, FALS
     
     opponent_names[i] <- rownames(df_stats[[i]][1,])
     
+    team_names[i] <- rownames(df_stats[[i]][2,])
     
   }
   
@@ -136,7 +142,7 @@ pull_stats <- function(link_txt, away = c(TRUE, FALSE), row_names = c(TRUE, FALS
   } else {
     game_diffs$Opponent <- opponent_names
     
-    game_diffs$Team <- rownames(df_stats[[1]][2,])
+    game_diffs$Team <- team_names
   }
   
   
