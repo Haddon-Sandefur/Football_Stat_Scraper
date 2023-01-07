@@ -14,7 +14,7 @@ Here are the current v2 files:
 
 [`web_crawl_v2.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/web_crawl_v2.R) - This is the Web Crawler that grabs relevant links to scrape using the above file's functionality.
 
-[`full_data_generator_v2.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/full_data_generator_v2.R) - Sources [`pull_stats_v2.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/pull_stats_v2.R) to scrape and write [`master_set_v2.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/master_set_v2.txt) a dataset containing all team's games and performance. Also creates [`master_avg_v2.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/master_avg_v2.txt), which contains each teams' season average performance.
+[`full_data_generator_v2.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/full_data_generator_v2.R) - Sources [`pull_stats_v2.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/pull_stats_v2.R), to scrape and write [`master_set_v2.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/master_set_v2.txt) a dataset containing all team's games and performance. Also creates [`master_avg_v2.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/master_avg_v2.txt), which contains each teams' season average performance.
 
 [`links.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/links.txt) - This does not have the naming convention the other v2 files have for simplicity. This file contains all of the links collected by [`web_crawl_v2.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/web_crawl_v2.R).
 
