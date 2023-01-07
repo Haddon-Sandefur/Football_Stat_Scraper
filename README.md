@@ -6,7 +6,7 @@ This is my college football web crawler + scraper. The intent is to use this dat
 
 - Update 01/06 VERSION 2 ROLL OUT ===========================================================================================
 
-I've gone ahead and streamlined the data collection process, which was previosly tedious (having to manually grab links to be scraped yourself). Now we have a webcrawler to obtain these links for us. Not only that, but generating the master data set (the data set containing all matchups through weeks 1-15) has become much more simple. Further, the computation time and code has been chewed from the original script that calculated season average statistics.
+I've gone ahead and streamlined the data collection process, which was previously tedious (having to manually grab links to be scraped yourself). Now we have a webcrawler to obtain these links for us. Not only that, but generating the master data set (the data set containing all matchups through weeks 1-15) has become much more simple. Further, the computation time and code has been chewed from the original script that calculated season average statistics.
 
 Here are the current v2 files:
 
@@ -14,7 +14,7 @@ Here are the current v2 files:
 
 "web_crawl_v2.R" - This is the Web Crawler that grabs relevant links to scrape using the above file's functionality.
 
-"full_data_generator_v2" - Sources "pull_states_v2.R" to scrape and store "master_set_v2.txt" a dataset containing all team's games and performance. Also creates "master_avg_v2.txt", which contains each teams' season average performance.
+"full_data_generator_v2" - Sources "pull_states_v2.R" to scrape and write "master_set_v2.txt" a dataset containing all team's games and performance. Also creates "master_avg_v2.txt", which contains each teams' season average performance.
 
 "links.txt" - This does not have the naming convention the other v2 files have for simplicity. This file contains all of the links collecet by "web_crawl_v2.R"
 
@@ -32,7 +32,7 @@ The "spreads.txt" and "spread_model.py" in the v1 folder were built with the old
 
 - Legacy Version + Files ======================================================================================================
 
-Anything not marked with "_v2" in the file is LEGACY: Below you will find the old Read Me file for the legacy code and data.
+Below you will find the old ReadMe file for the legacy code and data.
 
 Hey there.
 
