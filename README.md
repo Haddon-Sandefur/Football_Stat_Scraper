@@ -30,7 +30,7 @@ The [`spreads.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blo
 
 
 
-- Legacy Version + Files ======================================================================================================
+- Legacy Version + Files ======================================================================================
 
 Below you will find the old ReadMe file for the legacy code and data.
 
