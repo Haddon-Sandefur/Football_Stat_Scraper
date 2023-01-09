@@ -24,7 +24,7 @@ I've gone ahead and streamlined the data collection process, which was previousl
 
 * Added a script ([`master_set_edit_v21.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/master_set_edit_v21.R)) that edits the master sets and adds conference information to the teams. These new datasets, the ones used for the below model, are found in [`master_set_v21.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/master_set_v21.txt) and the averages in [`master_avg_v21.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/master_avg_v21.txt). 
 
-* Added Random Forest Model in [`rf.rda`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/rf.rda) and [`model_gen_v21.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/model_gen_v21.R). There is a classifier model in this repo as well that is currently unused, but is kept for future experimentation. 
+* Added Random Forest Model in [`rf.rda`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/rf.rda) and [`model_gen_v21.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/model_gen_v21.R). There is a classifier model in this repo as well that is currently unused, but is kept for future experimentation. ***Prediction: UGA will win today against TCU by 6 points.***
 
 * Updating [`Conference_power.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/Conference_power.txt) to better describe parity between P5 and G5 schools.
 
