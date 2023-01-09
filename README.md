@@ -20,7 +20,7 @@ I've gone ahead and streamlined the data collection process, which was previousl
 
 * [`Conference_power.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/Conference_power.txt) - my subjective conference power rankings to be used later.
 
-### Version 2.1
+### Version 2.1 files:
 
 * Added a script ([`master_set_edit_v21.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/master_set_edit_v21.R)) that edits the master sets and adds conference information to the teams. These new datasets, the ones used for the below model, are found in [`master_set_v21.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/master_set_v21.txt) and the averages in [`master_avg_v21.txt`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/master_avg_v21.txt). 
 
