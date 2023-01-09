@@ -5,10 +5,10 @@ Subjective Rankings (Bigger Number Means Better):
 3 - Independent Low
 4 - Mountain West
 5 - Sun Belt
-6 - AAC
-7 - ACC
-8 - Independent High (Notre Dame, BYU)
-9 - PAC12
-10 - Big 12
-11 - Big 10
-12 - SEC
+11 - AAC
+17 - ACC
+18 - Independent High (Notre Dame, BYU)
+19 - PAC12
+20 - Big 12
+21 - Big 10
+22 - SEC
