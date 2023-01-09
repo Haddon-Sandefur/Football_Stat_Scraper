@@ -64,7 +64,7 @@ master_avg <- master_set %>% group_by(Team) %>% summarise(across(where(is.numeri
 
 # Round all of the results to three decimal places:
 
-master_avg <- cbind(ssn_avg["Team"],round(ssn_avg[2:ncol(ssn_avg)], digits = 3))
+master_avg <- cbind(master_avg["Team"],round(master_avg[2:ncol(master_avg)], digits = 3))
 
 # Write File
 
