@@ -8,7 +8,7 @@ This is my college football web crawler + scraper. The intent is to use this dat
 
 I've gone ahead and streamlined the data collection process, which was previously tedious (having to manually grab links to be scraped yourself). Now we have a webcrawler to obtain these links for us. Not only that, but generating the master data set (the data set containing all matchups through weeks 1-15) has become much more simple. Further, the computation time and code has been chewed from the original script that calculated season average statistics.
 
-### Here are the current v2 files:
+### Version 2 files:
 
 * [`pull_stats_v2.R`](https://github.com/Haddon-Sandefur/Football_Stat_Scraper/blob/main/pull_stats_v2.R) - This is the Web Scraper. This has now been adjusted to include a text file parser, which allows for choosing which links you want to be read by line.
 
