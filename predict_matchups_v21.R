@@ -9,7 +9,7 @@ load("rfclass.rda")
 df_avg <- read.table("master_avg_v21.txt")
 
 # Function for Returning Prediction
-matchup <-function(Team1, Team2, data, avg){ 
+matchup <-function(Team1, Team2, data){ 
   
  
   
@@ -20,7 +20,7 @@ matchup <-function(Team1, Team2, data, avg){
   
   # Here lies a problem. Depending on the order in which you input a team, this model will yield similar, albiet different predictions
   # for each matchup.This likely has to do with the influence certain ranges of values have on decision trees within the random forest.
-  # We can solve this by taking both orders of a matchup (e.g. Team1 vs Team2 and Team2 vs Team1) and averaging the results. This will
+  # We can -brutishly- solve this by taking both orders of a matchup (e.g. Team1 vs Team2 and Team2 vs Team1) and averaging the results. This will
   # give us a fixed probability for each matchup, irrespective of order.
   
   
